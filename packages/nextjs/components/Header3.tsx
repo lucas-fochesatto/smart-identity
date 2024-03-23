@@ -11,6 +11,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
+import { RainbowKitCustomConnectButton } from './scaffold-eth'
 
 const products = [
   { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -37,7 +38,7 @@ export default function Header2() {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img className="h-8 w-auto" src="small_logo.svg" alt="" />
+            <img className="h-8 w-auto" src="big_logo.svg" alt="" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -62,6 +63,7 @@ export default function Header2() {
           </Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <RainbowKitCustomConnectButton/>
         </div>
       </nav>
     </header>

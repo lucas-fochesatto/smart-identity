@@ -43,22 +43,6 @@ const Home: NextPage = () => {
               <p>Acesse aqui sua certidão de nascimento</p>
             </div>
           </Link>
-          <Link href='identidade' className="p-10  bg-blue-700 h-64 w-3/12 max-w-72 rounded-3xl">
-            <div className="p-2 text-white text-3xl font-semibold">
-              <h1>Identidade</h1> 
-            </div>
-            <div className="p-2 text-white text-1xl font-semibold">
-                <p>Acesse aqui sua documento de identificação</p>
-            </div>
-          </Link>
-          <Link href='CPF' className="p-10  bg-yellow-500 h-64 w-3/12 max-w-72 rounded-3xl">
-            <div className="p-2 text-white text-3xl font-semibold">
-              <h1>CPF</h1>
-            </div>
-            <div className="p-2 text-white text-1xl font-semibold">
-              <p>Acesse aqui seu CPF</p>
-            </div>
-          </Link>
         </div>
       </div>
     )
