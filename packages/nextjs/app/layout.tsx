@@ -1,7 +1,10 @@
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import { Metadata } from "next";
-import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
+import { ScaffoldApp } from "~~/components/ScaffoldApp";
 import { ThemeProvider } from "~~/components/ThemeProvider";
+import { BlockieAvatar } from "~~/components/scaffold-eth";
+import { appChains } from "~~/services/web3/wagmiConnectors";
 import "~~/styles/globals.css";
 
 const baseUrl = process.env.VERCEL_URL
@@ -46,9 +49,7 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <html suppressHydrationWarning>
       <body>
-        <ThemeProvider enableSystem>
-          <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
-        </ThemeProvider>
+         <ScaffoldApp>{children}</ScaffoldApp>
       </body>
     </html>
   );
