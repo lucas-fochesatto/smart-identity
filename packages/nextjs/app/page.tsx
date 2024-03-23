@@ -9,17 +9,26 @@ import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
 
-  return (
-    <>
-      <div className="flex items-center flex-col flex-grow pt-10 bg-white">
-        <img src="big_logo.svg" alt="" />
-        <div className="p-2.5 text-gray-800 text-center mt-12 text-5xl">
-          <h2>Conecte sua carteira para emitir seus documentos com</h2>
-          <h2>praticidade e simplicidade!</h2>
+  if(!connectedAddress) {
+    return (
+      <>
+        <div className="flex items-center flex-col flex-grow pt-10 bg-white">
+          <img src="big_logo.svg" alt="" />
+          <div className="p-2.5 text-gray-800 text-center mt-12 text-5xl mb-12">
+            <h2>Conecte sua carteira para emitir seus documentos com</h2>
+            <h2>praticidade e simplicidade!</h2>
+          </div>
+          <RainbowKitCustomConnectButton />
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h1>Sua carteira é: {connectedAddress}</h1>
+      </>
+    )
+  }
 };
 
 export default Home;
