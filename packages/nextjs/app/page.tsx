@@ -35,7 +35,7 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-10 mt-12" >
-          <Link href='Certidão de Nascimento' className="p-10  bg-green-700 h-64 w-3/12 max-w-72 rounded-3xl">
+          <Link href='Certidao_de_Nascimento' className="p-10  bg-green-700 h-64 w-3/12 max-w-72 rounded-3xl">
             <div className="p-2 text-white text-3xl font-semibold">
               <h1>Certidão de Nascimento</h1>
               </div>
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
               <p>Acesse aqui sua certidão de nascimento</p>
             </div>
           </Link>
-          <Link href='identidade' className="p-10  bg-blue-700 h-64 w-3/12 max-w-72 rounded-3xl">
+          <Link href='Identidade' className="p-10  bg-blue-700 h-64 w-3/12 max-w-72 rounded-3xl">
             <div className="p-2 text-white text-3xl font-semibold">
               <h1>Identidade</h1> 
             </div>

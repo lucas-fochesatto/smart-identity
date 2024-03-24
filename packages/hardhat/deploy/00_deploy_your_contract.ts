@@ -27,12 +27,6 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     log: true,
     autoMine: true
   })
-
-  const dbContract = await hre.ethers.getContract<Contract>("Database", deployer);
-  // console.log("👋 Initial greeting:", await yourContract.greeting());
-  await dbContract.addPerson("0xa9760110671d7a5a37A72F684D7D1d92F2dE84dA", "Lucas", 12132113);
-  //const person = await dbContract.getPersonByWallet(0xa9760110671d7a5a37A72F684D7D1d92F2dE84dA)
-  //console.log(person.name);
 };
 
 export default deployYourContract;

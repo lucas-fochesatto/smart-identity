@@ -31,18 +31,11 @@ const Home: NextPage = () => {
 
         <div className="flex items-center flex-col flex-grow">
           <div className="w-1/2 p-1 bg-stone-100 text-center text-gray-800 text-2xl font-bold">
-            <h1>Minha carteira de documentações</h1>
+            <h1>Documento de Identidade</h1>
           </div>
         </div>
-        <div className="flex flex-wrap justify-center gap-10 mt-12" >
-          <Link href='Certidão de Nascimento' className="p-10  bg-green-700 h-64 w-3/12 max-w-72 rounded-3xl">
-            <div className="p-2 text-white text-3xl font-semibold">
-              <h1>Certidão de Nascimento</h1>
-              </div>
-            <div className="p-2 text-white text-1xl font-semibold">
-              <p>Acesse aqui sua certidão de nascimento</p>
-            </div>
-          </Link>
+        <div className="w-1/2 bg-blue-400 border-4 min-h-3.5 rounded-m" >
+           
         </div>
       </div>
     )

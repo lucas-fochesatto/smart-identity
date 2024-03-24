@@ -7,8 +7,197 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Database: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0",
       abi: [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_wallet",
+              type: "address",
+            },
+          ],
+          name: "addAdmin",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "wallet",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "matricula",
+              type: "uint256",
+            },
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "complemento",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "municipio",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "uf",
+                  type: "string",
+                },
+              ],
+              internalType: "struct Database.Local",
+              name: "localNascimento",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "complemento",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "municipio",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "uf",
+                  type: "string",
+                },
+              ],
+              internalType: "struct Database.Local",
+              name: "localRegistro",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "hora",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "minuto",
+                  type: "string",
+                },
+              ],
+              internalType: "struct Database.Horario",
+              name: "horaNascimento",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "dia",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "mes",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "ano",
+                  type: "string",
+                },
+              ],
+              internalType: "struct Database.Data",
+              name: "dataRegistro",
+              type: "tuple",
+            },
+            {
+              internalType: "string",
+              name: "numeroDNV",
+              type: "string",
+            },
+          ],
+          name: "addDocumentNascimento",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_wallet",
+              type: "address",
+            },
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "uint256",
+                  name: "cpf",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "mae",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "pai",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "dataNascimento",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "naturalidade",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "nacionalidade",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "sexo",
+                  type: "string",
+                },
+              ],
+              internalType: "struct Database.Person",
+              name: "person",
+              type: "tuple",
+            },
+          ],
+          name: "addPerson",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
         {
           inputs: [
             {
@@ -18,16 +207,11 @@ const deployedContracts = {
             },
             {
               internalType: "string",
-              name: "name",
+              name: "_newName",
               type: "string",
             },
-            {
-              internalType: "uint256",
-              name: "cpf",
-              type: "uint256",
-            },
           ],
-          name: "addPerson",
+          name: "editName",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
@@ -54,157 +238,75 @@ const deployedContracts = {
                   name: "cpf",
                   type: "uint256",
                 },
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "mae",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "pai",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "dataNascimento",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "naturalidade",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "nacionalidade",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "sexo",
+                  type: "string",
+                },
               ],
               internalType: "struct Database.Person",
-              name: "",
+              name: "person",
               type: "tuple",
             },
           ],
           stateMutability: "view",
           type: "function",
         },
-      ],
-      inheritedFunctions: {},
-    },
-    YourContract: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-      abi: [
         {
           inputs: [
             {
-              internalType: "address",
-              name: "_owner",
-              type: "address",
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "digital",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct Database.Digital",
+              name: "digital",
+              type: "tuple",
             },
           ],
-          stateMutability: "nonpayable",
-          type: "constructor",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "greetingSetter",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "string",
-              name: "newGreeting",
-              type: "string",
-            },
-            {
-              indexed: false,
-              internalType: "bool",
-              name: "premium",
-              type: "bool",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "value",
-              type: "uint256",
-            },
-          ],
-          name: "GreetingChange",
-          type: "event",
-        },
-        {
-          inputs: [],
-          name: "greeting",
-          outputs: [
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "owner",
+          name: "recoverWallet",
           outputs: [
             {
               internalType: "address",
-              name: "",
+              name: "wallet",
               type: "address",
             },
           ],
           stateMutability: "view",
           type: "function",
-        },
-        {
-          inputs: [],
-          name: "premium",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "string",
-              name: "_newGreeting",
-              type: "string",
-            },
-          ],
-          name: "setGreeting",
-          outputs: [],
-          stateMutability: "payable",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "totalCounter",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          name: "userGreetingCounter",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "withdraw",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          stateMutability: "payable",
-          type: "receive",
         },
       ],
       inheritedFunctions: {},
