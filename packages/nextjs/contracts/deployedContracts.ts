@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   534351: {
     Database: {
-      address: "0xBba1400EC4A30374fBb1A658A446b9cB7C770e25",
+      address: "0x4FD2e2731484711E546Eabeca7F66CF1FB554Bd4",
       abi: [
         {
           inputs: [],
@@ -40,91 +40,18 @@ const deployedContracts = {
               type: "uint256",
             },
             {
-              components: [
-                {
-                  internalType: "string",
-                  name: "complemento",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "municipio",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "uf",
-                  type: "string",
-                },
-              ],
-              internalType: "struct Database.Local",
-              name: "localNascimento",
-              type: "tuple",
-            },
-            {
-              components: [
-                {
-                  internalType: "string",
-                  name: "complemento",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "municipio",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "uf",
-                  type: "string",
-                },
-              ],
-              internalType: "struct Database.Local",
-              name: "localRegistro",
-              type: "tuple",
-            },
-            {
-              components: [
-                {
-                  internalType: "string",
-                  name: "hora",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "minuto",
-                  type: "string",
-                },
-              ],
-              internalType: "struct Database.Horario",
-              name: "horaNascimento",
-              type: "tuple",
-            },
-            {
-              components: [
-                {
-                  internalType: "string",
-                  name: "dia",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "mes",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "ano",
-                  type: "string",
-                },
-              ],
-              internalType: "struct Database.Data",
-              name: "dataRegistro",
-              type: "tuple",
+              internalType: "string",
+              name: "uf",
+              type: "string",
             },
             {
               internalType: "string",
-              name: "numeroDNV",
+              name: "localNascimento",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "localRegistro",
               type: "string",
             },
           ],
@@ -468,9 +395,29 @@ const deployedContracts = {
         },
         {
           inputs: [],
+          name: "reset",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
           name: "update",
           outputs: [],
           stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "updateTrigger",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
       ],

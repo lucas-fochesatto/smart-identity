@@ -3,7 +3,7 @@ pragma solidity ^0.8.7;
 
 contract Database {
 
-    bool public update;
+    bool public updateTrigger;
 
     struct Person {
         string name;
@@ -77,7 +77,7 @@ contract Database {
 
     function update() public {
         if(idChain[idChain[msg.sender].mae].changed == true || idChain[idChain[msg.sender].pai].changed == true) {
-            update = true;
+            updateTrigger = true;
         }
     }
 
@@ -89,11 +89,13 @@ contract Database {
     function addDocumentNascimento(
         address wallet,
         uint256 matricula,
+        string memory uf,
         string memory localNascimento,
         string memory localRegistro
     ) public onlyAdmin {
         documentNascimentoChain[wallet] = DocumentNascimento(
             matricula,
+            uf,
             localNascimento,
             localRegistro);
     }

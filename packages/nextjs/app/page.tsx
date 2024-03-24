@@ -36,7 +36,7 @@ const Home: NextPage =  () => {
   if(!connectedAddress) {
     return (
       <>
-        <div className="flex items-center flex-col flex-grow pt-10 mt-12 juy6bg-white">
+        <div className="flex items-center flex-col flex-grow pt-10 mt-12 bg-white">
           <img src="big_logo.svg" alt="" />
           <div className="p-2.5 text-gray-800 text-center mt-12 text-5xl mb-12">
             <h2>Conecte sua carteira para emitir seus documentos com</h2>
