@@ -32,40 +32,44 @@ const Home: NextPage = () => {
           <div className="flex items-center flex-rows place-content-center gap-x-10">
             <div className="mt-12 w-4/12 h-[353px] bg-gray-200" >
               <div className="flex items-center pl-9 mt-8">
-                <div className="w-1/2 text-left text-black font-bold">
-                  <p className="text-lg mt-0mb-2">Nome: Lucas Emanuel de Andrade Fochesatto</p>
-                  <p className="text-lg m-0">Descrição mts pika mds issaki vai se complicated, pai n manda bem em port</p>
-                  <p className="text-lg m-0"><Link href='/'>Linkedin-&gt;</Link></p>
+                <div className="w-1/2 text-left text-black">
+                  <p className="text-lg mt-0 mb-2 font-bold">Lucas Emanuel de Andrade Fochesatto</p>
+                  <p className="text-lg m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                  <p className="text-lg m-0 text-blue-700"><Link href='/'>Linkedin-&gt;</Link></p>
                 </div>
+                  <img className='w-5/12 max-h-56 rounded-full' src="pintos.jpeg" alt="" />
               </div>
             </div>
             <div className="mt-12 w-4/12 h-[353px] bg-gray-200" >
               <div className="flex items-center pl-9 mt-8">
-                <div className="w-1/2 text-left text-black font-bold">
-                  <p className="text-lg mt-0 mb-2">Nome: Isack Daniel Targino de Souza</p>
-                  <p className="text-lg m-0">Descrição mts pika mds issaki vai se complicated, pai n manda bem em port</p>
-                  <p className="text-lg m-0"><Link href='/'>Linkedin-&gt;</Link></p>
+                <div className="w-1/2 text-left text-black items-center">
+                  <p className="text-lg mt-0 mb-2 font-bold">Isack Daniel Targino de Souza</p>
+                  <p className="text-lg m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                  <p className="text-lg m-0 text-blue-700"><Link href='/'>Linkedin-&gt;</Link></p>
                 </div>
+                  <img className='w-5/12 max-h-56 rounded-full' src="pdb.png" alt="" />
               </div>
             </div>
           </div>
           <div className="flex items-center flex-rows place-content-center gap-x-10">
             <div className="mt-4 w-4/12 h-[353px] bg-gray-200" >
               <div className="flex items-center pl-9 mt-8">
-                <div className="w-1/2 text-left text-black font-bold">
-                  <p className="text-lg mt-0 mb-2">Nome: Ian Patrick da Costa Soares</p>
-                  <p className="text-lg m-0">Descrição mts pika mds issaki vai se complicated, pai n manda bem em port</p>
+                <div className="w-1/2 text-left text-black">
+                  <p className="text-lg mt-0 mb-2 font-bold">Ian Patrick da Costa Soares</p>
+                  <p className="text-lg m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                   <p className="text-lg m-0 text-blue-700"><a href='https://www.linkedin.com/in/ianptkcs//' target='_blank' rel='noopener noreferrer'>Linkedin-&gt;</a></p>
                 </div>
+                <img className='w-5/12 max-h-56 rounded-full' src="fotinha minha.jpg" alt="" />
               </div>
             </div>
             <div className="mt-4 w-4/12 h-[353px] bg-gray-200" >
               <div className="flex items-center pl-9 mt-8">
-                <div className="w-1/2 text-left text-black font-bold">
-                  <p className="text-lg mt-0 mb-2">Nome: Marcus Vinícius Corbo dos Santos</p>
-                  <p className="text-lg m-0">Descrição mts pika mds issaki vai se complicated, pai n manda bem em port</p>
+                <div className="w-1/2 text-left text-black">
+                  <p className="text-lg mt-0 mb-2 font-bold">Marcus Vinícius Corbo dos Santos</p>
+                  <p className="text-lg m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                   <p className="text-lg m-0 text-blue-700"><a href='https://www.linkedin.com/in/marcus-corbo/' target='_blank' rel='noopener noreferrer'>Linkedin-&gt;</a></p>
                 </div>
+                <img className='w-5/12 max-h-56 rounded-full' src="atéotalo.jpeg" alt="" />
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   534351: {
     Database: {
-      address: "0x4FD2e2731484711E546Eabeca7F66CF1FB554Bd4",
+      address: "0x1CD8616DF70878bC5a829B7F571361f1d27A3A30",
       abi: [
         {
           inputs: [],
@@ -31,31 +31,34 @@ const deployedContracts = {
           inputs: [
             {
               internalType: "address",
-              name: "wallet",
+              name: "dadAddress",
               type: "address",
             },
             {
-              internalType: "uint256",
-              name: "matricula",
-              type: "uint256",
-            },
-            {
-              internalType: "string",
-              name: "uf",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "localNascimento",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "localRegistro",
-              type: "string",
+              internalType: "address",
+              name: "childAddress",
+              type: "address",
             },
           ],
-          name: "addDocumentNascimento",
+          name: "addChildDad",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "momAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "childAddress",
+              type: "address",
+            },
+          ],
+          name: "addChildMom",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
@@ -115,9 +118,19 @@ const deployedContracts = {
                   type: "string",
                 },
                 {
-                  internalType: "bool",
-                  name: "changed",
-                  type: "bool",
+                  internalType: "uint256",
+                  name: "matricula",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "nomeMae",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "nomePai",
+                  type: "string",
                 },
               ],
               internalType: "struct Database.Person",
@@ -153,7 +166,64 @@ const deployedContracts = {
           inputs: [
             {
               internalType: "address",
-              name: "_wallet",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "childDadChain",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "childMomChain",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "digitalChain",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "person",
               type: "address",
             },
             {
@@ -171,136 +241,36 @@ const deployedContracts = {
           inputs: [
             {
               internalType: "address",
-              name: "_wallet",
+              name: "momAddress",
               type: "address",
             },
-          ],
-          name: "getPersonByWallet",
-          outputs: [
             {
-              components: [
-                {
-                  internalType: "string",
-                  name: "name",
-                  type: "string",
-                },
-                {
-                  internalType: "uint256",
-                  name: "cpf",
-                  type: "uint256",
-                },
-                {
-                  internalType: "uint256",
-                  name: "id",
-                  type: "uint256",
-                },
-                {
-                  internalType: "address",
-                  name: "mae",
-                  type: "address",
-                },
-                {
-                  internalType: "address",
-                  name: "pai",
-                  type: "address",
-                },
-                {
-                  internalType: "string",
-                  name: "dataNascimento",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "naturalidade",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "nacionalidade",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "sexo",
-                  type: "string",
-                },
-                {
-                  internalType: "bool",
-                  name: "changed",
-                  type: "bool",
-                },
-              ],
-              internalType: "struct Database.Person",
-              name: "person",
-              type: "tuple",
+              internalType: "string",
+              name: "_newName",
+              type: "string",
             },
           ],
-          stateMutability: "view",
+          name: "editNameMom",
+          outputs: [],
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
-          inputs: [],
-          name: "getPersonData",
-          outputs: [
+          inputs: [
             {
-              components: [
-                {
-                  internalType: "string",
-                  name: "name",
-                  type: "string",
-                },
-                {
-                  internalType: "uint256",
-                  name: "cpf",
-                  type: "uint256",
-                },
-                {
-                  internalType: "uint256",
-                  name: "id",
-                  type: "uint256",
-                },
-                {
-                  internalType: "address",
-                  name: "mae",
-                  type: "address",
-                },
-                {
-                  internalType: "address",
-                  name: "pai",
-                  type: "address",
-                },
-                {
-                  internalType: "string",
-                  name: "dataNascimento",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "naturalidade",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "nacionalidade",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "sexo",
-                  type: "string",
-                },
-                {
-                  internalType: "bool",
-                  name: "changed",
-                  type: "bool",
-                },
-              ],
-              internalType: "struct Database.Person",
-              name: "",
-              type: "tuple",
+              internalType: "address",
+              name: "dadAddress",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "_newName",
+              type: "string",
             },
           ],
-          stateMutability: "view",
+          name: "editNamedad",
+          outputs: [],
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -359,9 +329,19 @@ const deployedContracts = {
               type: "string",
             },
             {
-              internalType: "bool",
-              name: "changed",
-              type: "bool",
+              internalType: "uint256",
+              name: "matricula",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "nomeMae",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "nomePai",
+              type: "string",
             },
           ],
           stateMutability: "view",
@@ -388,33 +368,6 @@ const deployedContracts = {
               internalType: "address",
               name: "wallet",
               type: "address",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "reset",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "update",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "updateTrigger",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
             },
           ],
           stateMutability: "view",

@@ -3,30 +3,23 @@ pragma solidity ^0.8.7;
 
 contract Database {
 
-    bool public updateTrigger;
-
     struct Person {
-        string name;
-        uint256 cpf;
-        uint256 id;
-        address mae;
-        address pai;
-        string dataNascimento;
-        string naturalidade;
-        string nacionalidade;
-        string sexo;
-        bool changed;
+        string name;            // 0
+        uint256 cpf;            // 1
+        uint256 id;             // 2
+        address mae;            // 3
+        address pai;            // 4
+        string dataNascimento;  // 5
+        string naturalidade;    // 6
+        string nacionalidade;   // 7
+        string sexo;            // 8 
+        uint256 matricula;      // 9
+        string nomeMae;         // 10
+        string nomePai;         // 
     }
 
     struct Digital {
         uint256 digital;
-    }
-
-    struct DocumentNascimento {
-        uint256 matricula;
-        string uf;
-        string municipioNascimento;
-        string municipioRegistro;
     }
 
     modifier onlyAdmin {
@@ -42,25 +35,41 @@ contract Database {
 
     mapping(address => Person) public idChain;
 
-    mapping(uint256 => address) digitalChain;
+    mapping(uint256 => address) public digitalChain;
 
-    mapping(address => DocumentNascimento) documentNascimentoChain;
+    mapping(address => address) public childMomChain;
 
-
-    function getPersonByWallet(address _wallet) public view onlyAdmin returns(Person memory person){
-        require(idChain[_wallet].cpf != 0, "This person is not registred!");
-        return idChain[_wallet];
-    }
+    mapping(address => address) public childDadChain;
 
     function addAdmin(address _wallet) public onlyAdmin {
         require(idChain[_wallet].cpf != 0, "This person is not registred!");
         admins[_wallet] = true;
     }
 
-    function editName(address _wallet, string memory _newName) public onlyAdmin {
-        require(idChain[_wallet].cpf != 0, "This person is not registred!");
-        idChain[_wallet].name = _newName;
-        idChain[_wallet].changed = true;
+    function editNameMom(address momAddress, string memory _newName) public onlyAdmin {
+        require(idChain[momAddress].cpf != 0, "This person is not registred!");
+        if (idChain[childMomChain[momAddress]].cpf != 0) {
+            idChain[childMomChain[momAddress]].nomeMae = _newName;
+        }
+    }
+
+    function editNamedad(address dadAddress, string memory _newName) public onlyAdmin {
+        require(idChain[dadAddress].cpf != 0, "This person is not registred!");
+        if (idChain[childDadChain[dadAddress]].cpf != 0) {
+            idChain[childDadChain[dadAddress]].nomeMae = _newName;
+        }
+    }
+
+    function editName(address person, string memory _newName) public onlyAdmin {
+        idChain[person].name = _newName;
+    }
+
+    function addChildMom(address momAddress, address childAddress) public onlyAdmin {
+        childMomChain[momAddress] = childAddress;
+    }
+
+    function addChildDad(address dadAddress, address childAddress) public onlyAdmin {
+        childDadChain[dadAddress] = childAddress;
     }
 
     function recoverWallet(Digital memory digital) public view onlyAdmin returns(address wallet) {
@@ -69,34 +78,5 @@ contract Database {
 
     function addPerson(address _wallet, Person memory person) public onlyAdmin {
         idChain[_wallet] = person;
-    }
-
-    function getPersonData() public view returns(Person memory) {
-        return idChain[msg.sender];
-    }
-
-    function update() public {
-        if(idChain[idChain[msg.sender].mae].changed == true || idChain[idChain[msg.sender].pai].changed == true) {
-            updateTrigger = true;
-        }
-    }
-
-    function reset() public {
-        idChain[idChain[msg.sender].mae].changed = false;
-        idChain[idChain[msg.sender].pai].changed = false;
-    }
-       
-    function addDocumentNascimento(
-        address wallet,
-        uint256 matricula,
-        string memory uf,
-        string memory localNascimento,
-        string memory localRegistro
-    ) public onlyAdmin {
-        documentNascimentoChain[wallet] = DocumentNascimento(
-            matricula,
-            uf,
-            localNascimento,
-            localRegistro);
     }
 }

@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Database.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.7;\n\ncontract Database {\n\n    bool public updateTrigger;\n\n    struct Person {\n        string name;            // 0\n        uint256 cpf;            // 1\n        uint256 id;             // 2\n        address mae;            // 3\n        address pai;            // 4\n        string dataNascimento;  // 5\n        string naturalidade;    // 6\n        string nacionalidade;   // 7\n        string sexo;            // 8 \n        uint256 matricula;      // 9\n        string nomeMae;         // 10\n        string nomePai;         // 11\n    }\n\n    struct Digital {\n        uint256 digital;\n    }\n\n    modifier onlyAdmin {\n        require(admins[msg.sender] == true, \"You are not an admin!\");\n        _;\n    }\n\n    constructor() {\n        admins[msg.sender] = true;\n    }\n    \n    mapping(address => bool) public admins;\n\n    mapping(address => Person) public idChain;\n\n    mapping(uint256 => address) public digitalChain;\n\n    mapping(address => address) public childMomChain;\n\n    mapping(address => address) public childDadChain;\n\n    function addAdmin(address _wallet) public onlyAdmin {\n        require(idChain[_wallet].cpf != 0, \"This person is not registred!\");\n        admins[_wallet] = true;\n    }\n\n    function editNameMom(address momAddress, string memory _newName) public onlyAdmin {\n        require(idChain[momAddress].cpf != 0, \"This person is not registred!\");\n        if (idChain[childMomChain[momAddress]].cpf != 0) {\n            idChain[childMomChain[momAddress]].nomeMae = _newName;\n        }\n    }\n\n    function editNamedad(address dadAddress, string memory _newName) public onlyAdmin {\n        require(idChain[dadAddress].cpf != 0, \"This person is not registred!\");\n        if (idChain[childDadChain[dadAddress]].cpf != 0) {\n            idChain[childDadChain[dadAddress]].nomeMae = _newName;\n        }\n    }\n\n    function addChildMom(address momAddress, address childAddress) public onlyAdmin {\n        childMomChain[momAddress] = childAddress;\n    }\n\n    function addChildDad(address dadAddress, address childAddress) public onlyAdmin {\n        childDadChain[dadAddress] = childAddress;\n    }\n\n    function recoverWallet(Digital memory digital) public view onlyAdmin returns(address wallet) {\n        return(digitalChain[digital.digital]);\n    }\n\n    function addPerson(address _wallet, Person memory person) public onlyAdmin {\n        idChain[_wallet] = person;\n    }\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

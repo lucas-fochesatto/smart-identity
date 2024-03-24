@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import dbJson from "../../hardhat/deployments/scrollSepolia/Database.json";
 import Link from "next/link";
 import type { NextPage } from "next";
-import { useAccount, useContractRead } from "wagmi";
+import { useAccount, useContractRead, useContractWrite, useWaitForTransaction } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useScaffoldContract, useScaffoldContractRead } from "~~/hooks/scaffold-eth";
@@ -32,6 +32,19 @@ const Home: NextPage =  () => {
     const { data } = await refetch();
     setResult(data);
   }
+
+  const { write } = useContractWrite({
+    address: dbJson.address,
+    abi: dbJson.abi,
+    functionName: 'addDocumentNascimento',
+    args: [
+      connectedAddress,
+      2132184218,
+      "SP",
+      "Belo Horizonte",
+      "Três Corações"
+    ]
+  })
 
   if(!connectedAddress) {
     return (

@@ -28,6 +28,18 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const DropdownMenu = () => (
+  <Popover.Panel className="absolute z-10 mt-3 transform px-2 w-screen max-w-xs sm:px-0">
+    <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+      <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+          <a href='Quem_Somos'>Quem Somos</a>
+          <a href='Suporte'>Suporte</a>
+          <a href='Saiba_Mais'>Saiba Mais</a>
+      </div>
+    </div>
+  </Popover.Panel>
+);
+
 export default function Header2() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -41,14 +53,24 @@ export default function Header2() {
           </a>
         </div>
         <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-          </button>
+          <Popover className="relative">
+            {({ open }) => (
+              <>
+                <Popover.Button
+                  className={classNames(
+                    open ? 'text-gray-900' : 'text-gray-700',
+                    '-m-2.5 inline-flex items-center justify-center rounded-md p-2.5'
+                  )}
+                  aria-label="Open main menu"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                  <span className="sr-only">Open main menu</span>
+                  <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                </Popover.Button>
+                {mobileMenuOpen && <DropdownMenu />}
+              </>
+            )}
+          </Popover>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Link href="Quem_Somos" className=" font-semibold leading-6 text-gray-900">

@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Database.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.7;\n\ncontract Database {\n\n    bool public updateTrigger;\n\n    struct Person {\n        string name;\n        uint256 cpf;\n        uint256 id;\n        address mae;\n        address pai;\n        string dataNascimento;\n        string naturalidade;\n        string nacionalidade;\n        string sexo;\n        uint256 matricula;\n        string uf;\n        string municipio;\n    }\n\n    struct Digital {\n        uint256 digital;\n    }\n\n    modifier onlyAdmin {\n        require(admins[msg.sender] == true, \"You are not an admin!\");\n        _;\n    }\n\n    constructor() {\n        admins[msg.sender] = true;\n    }\n    \n    mapping(address => bool) public admins;\n\n    mapping(address => Person) public idChain;\n\n    mapping(uint256 => address) public digitalChain;\n\n    function getPersonByWallet(address _wallet) public view onlyAdmin returns(Person memory person){\n        require(idChain[_wallet].cpf != 0, \"This person is not registred!\");\n        return idChain[_wallet];\n    }\n\n    function addAdmin(address _wallet) public onlyAdmin {\n        require(idChain[_wallet].cpf != 0, \"This person is not registred!\");\n        admins[_wallet] = true;\n    }\n\n    function editName(address _wallet, string memory _newName) public onlyAdmin {\n        require(idChain[_wallet].cpf != 0, \"This person is not registred!\");\n        idChain[_wallet].name = _newName;\n    }\n\n    function recoverWallet(Digital memory digital) public view onlyAdmin returns(address wallet) {\n        return(digitalChain[digital.digital]);\n    }\n\n    function addPerson(address _wallet, Person memory person) public onlyAdmin {\n        idChain[_wallet] = person;\n    }\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
