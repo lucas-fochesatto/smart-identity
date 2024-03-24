@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Database: {
-      address: "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0",
+      address: "0x0B306BF915C4d645ff596e518fAf3F9669b97016",
       abi: [
         {
           inputs: [],
@@ -276,6 +276,66 @@ const deployedContracts = {
               ],
               internalType: "struct Database.Person",
               name: "person",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getPersonData",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "uint256",
+                  name: "cpf",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "mae",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "pai",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "dataNascimento",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "naturalidade",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "nacionalidade",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "sexo",
+                  type: "string",
+                },
+              ],
+              internalType: "struct Database.Person",
+              name: "",
               type: "tuple",
             },
           ],

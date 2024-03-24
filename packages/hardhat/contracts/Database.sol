@@ -44,7 +44,7 @@ contract Database {
         string numeroDNV;
     }
 
-    modifier onlyOwner {
+    modifier onlyAdmin {
         require(admins[msg.sender] == true, "You are not an admin!");
         _;
     }
@@ -62,27 +62,31 @@ contract Database {
     mapping(address => DocumentNascimento) documentNascimentoChain;
 
 
-    function getPersonByWallet(address _wallet) public view onlyOwner returns(Person memory person){
+    function getPersonByWallet(address _wallet) public view onlyAdmin returns(Person memory person){
         require(idChain[_wallet].cpf != 0, "This person is not registred!");
         return idChain[_wallet];
     }
 
-    function addAdmin(address _wallet) public onlyOwner {
+    function addAdmin(address _wallet) public onlyAdmin {
         require(idChain[_wallet].cpf != 0, "This person is not registred!");
         admins[_wallet] = true;
     }
 
-    function editName(address _wallet, string memory _newName) public onlyOwner {
+    function editName(address _wallet, string memory _newName) public onlyAdmin {
         require(idChain[_wallet].cpf != 0, "This person is not registred!");
         idChain[_wallet].name = _newName;
     }
 
-    function recoverWallet(Digital memory digital) public view onlyOwner returns(address wallet) {
+    function recoverWallet(Digital memory digital) public view onlyAdmin returns(address wallet) {
         return(digitalChain[digital.digital]);
     }
 
-    function addPerson(address _wallet, Person memory person) public onlyOwner {
+    function addPerson(address _wallet, Person memory person) public onlyAdmin {
         idChain[_wallet] = person;
+    }
+
+    function getPersonData() public view returns(Person memory) {
+        return idChain[msg.sender];
     }
        
     function addDocumentNascimento(
@@ -93,7 +97,7 @@ contract Database {
         Horario memory horaNascimento,
         Data memory dataRegistro,
         string memory numeroDNV
-    ) public onlyOwner {
+    ) public onlyAdmin {
         documentNascimentoChain[wallet] = DocumentNascimento(
             matricula,
             localNascimento,
