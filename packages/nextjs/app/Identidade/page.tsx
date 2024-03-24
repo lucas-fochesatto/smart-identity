@@ -1,13 +1,35 @@
 "use client";
 
 import Link from "next/link";
+import dbJson from "../../../hardhat/deployments/scrollSepolia/Database.json";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
+import { useAccount, useContractRead } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { useState } from "react";
+import { getParsedError, notification } from "~~/utils/scaffold-eth";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
+
+  const [result, setResult] = useState<unknown>();
+
+  const { isFetching, refetch } = useContractRead({
+    address: dbJson.address,
+    functionName: 'idChain',
+    abi: dbJson.abi,
+    enabled: false,
+    args: [connectedAddress],
+    onError: (error: any) => {
+      const parsedErrror = getParsedError(error);
+      notification.error(parsedErrror);
+    },
+  });
+
+  const retrieve = async () =>{
+    const { data } = await refetch();
+    setResult(data);
+  }
 
   if(!connectedAddress) {
     return (
@@ -23,10 +45,12 @@ const Home: NextPage = () => {
       </>
     );
   } else {
+    retrieve()  
+    while(result != undefined && connectedAddress != null)
     return (
       <div className="p-10  bg-white min-h-screen">
         <div className="p-2.5 text-gray-800 text-3xl font-semibold">
-          <h1>Olá, Lucas!</h1>
+          <h1>Olá, {result[0]}!</h1>
         </div>
 
         <div className="flex items-center flex-col flex-grow">
@@ -47,15 +71,15 @@ const Home: NextPage = () => {
                 <div className="text-lg pl-4">
                   <div>
                     <p className="m-0 text-xs text-black font-medium">Nome</p>
-                    <p className="m-0 text-sm text-black font-semibold">Lucas Emanuel</p>
+                    <p className="m-0 text-sm text-black font-semibold">{result[0]}</p>
                   </div>
                   <div>
                     <p className="mt-4 mb-0 text-xs text-black font-medium">CPF</p>
-                    <p className="mt-0 mb-4 text-sm text-black font-semibold">2.691.510</p>
+                    <p className="mt-0 mb-4 text-sm text-black font-semibold">{result[1].toString()}</p>
                   </div>
                   <div>
                     <p className="m-0 text-xs text-black font-medium">Registro geral</p>
-                    <p className="m-0 text-sm text-black font-semibold">2.691.510</p>
+                    <p className="m-0 text-sm text-black font-semibold">{result[2].toString()}</p>
                   </div>
                 </div>
               </div>
@@ -63,15 +87,15 @@ const Home: NextPage = () => {
                 <div className="text-lg pl-4">
                   <div>
                     <p className="m-0 text-xs text-black font-medium">Naturalidade</p>
-                    <p className="m-0 text-sm text-black font-semibold">Rio de Janeiro</p>
+                    <p className="m-0 text-sm text-black font-semibold">{result[6]}</p>
                   </div>
                   <div>
                     <p className="mt-4 mb-0 text-xs text-black font-medium">Nacionalidade</p>
-                    <p className="mt-0 mb-4 text-sm text-black font-semibold">Brasileira</p>
+                    <p className="mt-0 mb-4 text-sm text-black font-semibold">{result[7]}</p>
                   </div>
                   <div>
                     <p className="m-0 text-xs text-black font-medium">Sexo</p>
-                    <p className="m-0 text-sm text-black font-semibold">F</p>
+                    <p className="m-0 text-sm text-black font-semibold">{result[8]}</p>
                   </div>
                 </div>
               </div>

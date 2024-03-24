@@ -5,9 +5,9 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  31337: {
+  534351: {
     Database: {
-      address: "0x0B306BF915C4d645ff596e518fAf3F9669b97016",
+      address: "0xBba1400EC4A30374fBb1A658A446b9cB7C770e25",
       abi: [
         {
           inputs: [],
@@ -187,6 +187,11 @@ const deployedContracts = {
                   name: "sexo",
                   type: "string",
                 },
+                {
+                  internalType: "bool",
+                  name: "changed",
+                  type: "bool",
+                },
               ],
               internalType: "struct Database.Person",
               name: "person",
@@ -196,6 +201,25 @@ const deployedContracts = {
           name: "addPerson",
           outputs: [],
           stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "admins",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
         {
@@ -273,6 +297,11 @@ const deployedContracts = {
                   name: "sexo",
                   type: "string",
                 },
+                {
+                  internalType: "bool",
+                  name: "changed",
+                  type: "bool",
+                },
               ],
               internalType: "struct Database.Person",
               name: "person",
@@ -333,10 +362,79 @@ const deployedContracts = {
                   name: "sexo",
                   type: "string",
                 },
+                {
+                  internalType: "bool",
+                  name: "changed",
+                  type: "bool",
+                },
               ],
               internalType: "struct Database.Person",
               name: "",
               type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "idChain",
+          outputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "cpf",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "mae",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "pai",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "dataNascimento",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "naturalidade",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "nacionalidade",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "sexo",
+              type: "string",
+            },
+            {
+              internalType: "bool",
+              name: "changed",
+              type: "bool",
             },
           ],
           stateMutability: "view",
@@ -366,6 +464,13 @@ const deployedContracts = {
             },
           ],
           stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "update",
+          outputs: [],
+          stateMutability: "nonpayable",
           type: "function",
         },
       ],

@@ -33,7 +33,7 @@ export default function Header2() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white text-2xl">
+    <header className="fixed top-0 z-10 w-full bg-gray-200 text-2xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
@@ -52,13 +52,13 @@ export default function Header2() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <Link href="#" className=" font-semibold leading-6 text-gray-900">
+          <Link href="Quem_Somos" className=" font-semibold leading-6 text-gray-900">
             <span>Quem somos</span>
           </Link>
           <Link href="#" className=" font-semibold leading-6 text-gray-900">
             <span>Suporte</span>
           </Link>
-          <Link href="#" className=" font-semibold leading-6 text-gray-900">
+          <Link href="Saiba_Mais" className=" font-semibold leading-6 text-gray-900">
             <span>Saiba mais</span>
           </Link>
         </Popover.Group>

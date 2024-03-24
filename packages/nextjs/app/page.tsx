@@ -1,27 +1,42 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { address } from "../../hardhat/deployments/localhost/Database.json";
+import dbJson from "../../hardhat/deployments/scrollSepolia/Database.json";
 import Link from "next/link";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
+import { useAccount, useContractRead } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
+import { useScaffoldContract, useScaffoldContractRead } from "~~/hooks/scaffold-eth";
+import { getParsedError, notification } from "~~/utils/scaffold-eth";
 
-const Home: NextPage = () => {
+
+const Home: NextPage =  () => {
   const { address: connectedAddress } = useAccount();
 
-  const { data: personData } = useScaffoldContractRead({
-    contractName: "Database",
-    functionName: "getPersonData",
-    watch: true,
+  const [result, setResult] = useState<unknown>();
+
+  const { isFetching, refetch } = useContractRead({
+    address: dbJson.address,
+    functionName: 'idChain',
+    abi: dbJson.abi,
+    enabled: false,
+    args: [connectedAddress],
+    onError: (error: any) => {
+      const parsedErrror = getParsedError(error);
+      notification.error(parsedErrror);
+    },
   });
+
+  const retrieve = async () =>{
+    const { data } = await refetch();
+    setResult(data);
+  }
 
   if(!connectedAddress) {
     return (
       <>
-        <div className="flex items-center flex-col flex-grow pt-10 bg-white">
+        <div className="flex items-center flex-col flex-grow pt-10 mt-12 juy6bg-white">
           <img src="big_logo.svg" alt="" />
           <div className="p-2.5 text-gray-800 text-center mt-12 text-5xl mb-12">
             <h2>Conecte sua carteira para emitir seus documentos com</h2>
@@ -32,16 +47,15 @@ const Home: NextPage = () => {
       </>
     )
   } else {
-      console.log(personData)
-    
+      retrieve()
+      while(result != undefined && connectedAddress != null)
       return (
         <div className="p-10  bg-white min-h-screen">
-          <div className="p-2.5 text-gray-800 text-3xl font-semibold">
-            <h1>Olá</h1>
+          <div className="p-2.5 mt-12 text-gray-800 text-3xl font-semibold">
+            <h1>Olá, {result[0]}!</h1>
           </div>
-
           <div className="flex items-center flex-col flex-grow">
-            <div className="w-1/2 p-1 bg-stone-100 text-center text-gray-800 text-2xl font-bold">
+            <div className="w-1/2 p-1 mt-10 bg-stone-100 text-center text-gray-800 text-2xl font-bold">
               <h1>Minha carteira de documentações</h1>
             </div>
           </div>

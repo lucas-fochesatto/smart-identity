@@ -2,6 +2,9 @@
 pragma solidity ^0.8.7;
 
 contract Database {
+
+    bool public update;
+
     struct Person {
         string name;
         uint256 cpf;
@@ -12,36 +15,18 @@ contract Database {
         string naturalidade;
         string nacionalidade;
         string sexo;
-    }
-
-    struct Horario {
-        string hora;
-        string minuto;  
+        bool changed;
     }
 
     struct Digital {
         uint256 digital;
     }
 
-    struct Local {
-        string complemento;
-        string municipio;
-        string uf;
-    }
-
-    struct Data {
-        string dia;
-        string mes;
-        string ano;
-    }
-
     struct DocumentNascimento {
         uint256 matricula;
-        Local localNascimento;
-        Local localRegistro;
-        Horario horaNascimento;
-        Data dataRegistro;
-        string numeroDNV;
+        string uf;
+        string municipioNascimento;
+        string municipioRegistro;
     }
 
     modifier onlyAdmin {
@@ -53,9 +38,9 @@ contract Database {
         admins[msg.sender] = true;
     }
     
-    mapping(address => bool) admins;
+    mapping(address => bool) public admins;
 
-    mapping(address => Person) idChain;
+    mapping(address => Person) public idChain;
 
     mapping(uint256 => address) digitalChain;
 
@@ -75,6 +60,7 @@ contract Database {
     function editName(address _wallet, string memory _newName) public onlyAdmin {
         require(idChain[_wallet].cpf != 0, "This person is not registred!");
         idChain[_wallet].name = _newName;
+        idChain[_wallet].changed = true;
     }
 
     function recoverWallet(Digital memory digital) public view onlyAdmin returns(address wallet) {
@@ -88,22 +74,27 @@ contract Database {
     function getPersonData() public view returns(Person memory) {
         return idChain[msg.sender];
     }
+
+    function update() public {
+        if(idChain[idChain[msg.sender].mae].changed == true || idChain[idChain[msg.sender].pai].changed == true) {
+            update = true;
+        }
+    }
+
+    function reset() public {
+        idChain[idChain[msg.sender].mae].changed = false;
+        idChain[idChain[msg.sender].pai].changed = false;
+    }
        
     function addDocumentNascimento(
         address wallet,
         uint256 matricula,
-        Local memory localNascimento,
-        Local memory localRegistro,
-        Horario memory horaNascimento,
-        Data memory dataRegistro,
-        string memory numeroDNV
+        string memory localNascimento,
+        string memory localRegistro
     ) public onlyAdmin {
         documentNascimentoChain[wallet] = DocumentNascimento(
             matricula,
             localNascimento,
-            localRegistro,
-            horaNascimento,
-            dataRegistro,
-            numeroDNV);
+            localRegistro);
     }
 }
