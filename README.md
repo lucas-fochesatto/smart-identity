@@ -1,19 +1,37 @@
-# ID Bridge
+![LOGO_AQUI-removebg-preview](https://github.com/lucas-fochesatto/smart-identity/assets/58178979/97c8f725-a411-4060-8b82-e2c5f161b279)
+
 
 Welcome to ID Bridge! ID Bridge is an application designed to facilitate seamless updating and notification processes when users make changes to their names or other relevant data. It uniquely connects user wallets to their data, acting as a key to manage and automate updates across different platforms or contracts.
+
+## Relevant Information
+
+### Benefits of Immutability and Accessibility in Tracking Changes
+
+One of the key advantages of leveraging blockchain technology, particularly in applications like ID Bridge, is the concept of immutability. In a blockchain-based system, once a piece of data is recorded on the blockchain, it becomes immutable, meaning it cannot be altered or deleted retroactively. This property ensures that the integrity of the data remains intact, providing a tamper-proof record of all transactions and changes made within the system.
+
+In the context of ID Bridge, immutability plays a crucial role in maintaining the accuracy and trustworthiness of user data. When users make changes to their names or other relevant information, these changes are recorded as transactions on the blockchain. Since the blockchain is immutable, these transactions cannot be modified or erased, creating a transparent and verifiable audit trail of all modifications over time.
+
+Furthermore, the accessibility of this tracked data adds another layer of value to the ID Bridge application. Users, as well as authorized parties such as auditors or regulatory bodies, can easily access and verify the entire history of changes made to user data. This accessibility promotes transparency and accountability within the system, as users can confidently verify the accuracy of their data and ensure that it has not been tampered with.
+
+### About Scaffold-ETH-2
+
+Scaffold-ETH-2 is a powerful tool for rapidly building Ethereum-based applications. It provides a solid foundation, including boilerplate code, configuration, and best practices, allowing developers to focus on building the unique features of their application without worrying about setup complexities.
+
+### About Sepolia Scroll
+
+Sepolia Scroll is a reliable platform for deploying and hosting decentralized applications (dApps) built on Ethereum and other blockchain networks. It offers seamless deployment processes, scalability, and security, ensuring that your dApp is accessible to users without any hassle.
 
 ## Features
 
 - **Unique Wallet Integration:** Each user's wallet is uniquely connected to their data, ensuring secure and reliable updates.
 - **Automated Cross-Updates:** Changes made by users are automatically propagated across relevant platforms or contracts, eliminating manual intervention.
 - **Notification System:** Users receive notifications confirming successful updates and any relevant information.
-- **Written in TypeScript:** The frontend of the application is primarily built using TypeScript, offering type safety and enhanced developer experience.
-- **Tailwind CSS:** Tailwind CSS is utilized for styling, providing a customizable and utility-first approach to design.
-- **Smart Contract Integration:** Smart contracts, written in Solidity, handle the backend operations securely and efficiently.
+- **Frontend Built with Scaffold-ETH-2:** The frontend of the application is built using Scaffold-ETH-2, providing a scaffold for Ethereum-based applications and enhancing developer productivity.
+- **Deployed on Sepolia Scroll:** The application is deployed on the Sepolia Scroll platform, ensuring accessibility and reliability.
 
 ## Technologies Used
 
-- **Frontend**: TypeScript, Tailwind CSS
+- **Frontend**: Scaffold-ETH-2, TypeScript, Tailwind CSS
 - **Backend**: Solidity
 - **Other Tools**: JavaScript (for frontend logic), Web3.js (for interacting with Ethereum blockchain)
 
@@ -23,8 +41,8 @@ To run the application locally, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/lucas-fochesatto/smart-identity.git`
 2. Navigate to the project directory: `cd smart-identity`
-3. Install dependencies: `npm install`
-4. Start the development server: `npm start`
+3. Install dependencies: `yarn install`
+4. Start the development server: `yarn start`
 
 ## Usage
 
@@ -33,55 +51,6 @@ To run the application locally, follow these steps:
 3. **Automated Updates**: The application automatically updates the changes across platforms or contracts.
 4. **Notifications**: Users receive notifications confirming successful updates.
 
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/my-feature`.
-3. Make your changes and commit them: `git commit -am 'Add some feature'`.
-4. Push to the branch: `git push origin feature/my-feature`.
-5. Submit a pull request.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-## Acknowledgements
-
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Solidity](https://soliditylang.org/)
-- [Web3.js](https://web3js.readthedocs.io/en/v1.3.4/)
-- [TypeScript](https://www.typescriptlang.org/)
-
-## Contact
-
-For any inquiries or support, feel free to contact us at [your-email@example.com](mailto:your-email@example.com).
-
-# 🏗 Scaffold-ETH 2
-
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
-
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
-
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
-
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
-
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
-
-# Sepolia Scroll
-
-Our smartcontract Database.sol is deployed on Seplia Scroll network on the following address: `0x1CD8616DF70878bC5a829B7F571361f1d27A3A30`
-Also, you can see that it's got a verified code at Sepolia Scrollscan:
-[**sepolia.scrollscan.com/address/0x1cd8616df70878bc5a829b7f571361f1d27a3a30**](https://sepolia.scrollscan.com/address/0x1cd8616df70878bc5a829b7f571361f1d27a3a30)
-![image](https://github.com/lucas-fochesatto/smart-identity/assets/58178979/1f6d943f-130f-442f-a5d7-482cdee06722)
-
-  
